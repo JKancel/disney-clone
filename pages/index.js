@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
   }
   `;
 
-  const accountQuery = gql `
+  const accountQuery = gql`
   query {
     account(where: {id: "ckucysrg8hx740e09u51ojqj2"}) {
       username
@@ -46,16 +46,16 @@ export const getStaticProps = async () => {
   }
   `;
 
-const videosData = await graphQLClient.request(videoQuery)
-const videos = videosData.videos;
-const accountData = await graphQLClient.request(accountQuery)
-const account = accountData.account;
-return {
-  props: {
-    videos,
-    account
+  const videosData = await graphQLClient.request(videoQuery)
+  const videos = videosData.videos;
+  const accountData = await graphQLClient.request(accountQuery)
+  const account = accountData.account;
+  return {
+    props: {
+      videos,
+      account
+    }
   }
-}
 };
 
 
@@ -67,34 +67,34 @@ const Home = ({ videos, account }) => {
 
   return (
     <>
-    <NavBar account={account}></NavBar>
+      <NavBar account={account}></NavBar>
       <div className="app">
         <div className="main-video">
-          <img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title}/>
+          <img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title} />
         </div>
       </div>
       <div className="video-feed">
         <Link href="#disney"><div className="franchise" id="disney">
-          <Image src={disneyLogo} alt={"Disney Logo"}></Image>
+          <Image className="franchise-logo" src={disneyLogo} alt={"Disney Logo"}></Image>
         </div>
         </Link>
         <Link href="#pixar"><div className="franchise" id="pixar">
-        <Image src={pixarLogo} alt={"Pixar Logo"}></Image></div></Link>
+          <Image className="franchise-logo" src={pixarLogo} alt={"Pixar Logo"}></Image></div></Link>
         <Link href="#star-wars"><div className="franchise" id="star-wars">
-        <Image src={starWarsLogo} alt={"Star Wars Logo"}></Image></div></Link>
+          <Image className="franchise-logo" src={starWarsLogo} alt={"Star Wars Logo"}></Image></div></Link>
         <Link href="#nat-geo"><div className="franchise" id="nat-geo">
-        <Image src={natGeoLogo} alt={"Nat Geo Logo"}></Image></div></Link>
+          <Image className="franchise-logo" src={natGeoLogo} alt={"Nat Geo Logo"}></Image></div></Link>
         <Link href="#marvel"><div className="franchise" id="marvel">
-        <Image src={marvelLogo} alt={"Marvel Logo"}></Image></div></Link>
+          <Image className="franchise-logo" src={marvelLogo} alt={"Marvel Logo"}></Image></div></Link>
       </div>
-      <Section genre={'Recommanded for you'} videos={unSeenVideos(videos)}/>
-      <Section genre={'Family'} videos={filterVideos(videos, 'family')}/>
-      <Section id="star-wars" genre={'Start Wars'} videos={filterVideos(videos, 'star-wars')}/>
-      <Section genre={'Classic'} videos={filterVideos(videos, 'classic')}/>
-      <Section id="pixar" genre={'Pixar'} videos={filterVideos(videos, 'pixar')}/>
-      <Section id="disney" genre={'Disney'} videos={filterVideos(videos, 'disney')}/>
-      <Section id="nat-geo" genre={'National Geographic'} videos={filterVideos(videos, 'national-geographic')}/>
-      <Section id="marvel" genre={'Marvels'} videos={filterVideos(videos, 'marvels')}/>
+      <Section genre={'Recommanded for you'} videos={unSeenVideos(videos)} />
+      <Section genre={'Family'} videos={filterVideos(videos, 'family')} />
+      <Section id="star-wars" genre={'Start Wars'} videos={filterVideos(videos, 'star-wars')} />
+      <Section genre={'Classic'} videos={filterVideos(videos, 'classic')} />
+      <Section id="pixar" genre={'Pixar'} videos={filterVideos(videos, 'pixar')} />
+      <Section id="disney" genre={'Disney'} videos={filterVideos(videos, 'disney')} />
+      <Section id="nat-geo" genre={'National Geographic'} videos={filterVideos(videos, 'national-geographic')} />
+      <Section id="marvel" genre={'Marvels'} videos={filterVideos(videos, 'marvels')} />
 
     </>
   )
