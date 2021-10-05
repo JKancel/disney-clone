@@ -4,6 +4,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #13151F;
+    color: #FFF;
 }
 
 a {
@@ -13,4 +15,86 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.navbar {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* padding-top: 30px; */
+}
+
+.main-video {
+  width: 100vw;
+  height: 30vh;
+  overflow: hidden;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.main-video img {
+  width: 100%;
+  max-width: 1600px;
+}
+
+.card {
+  width: 19.2%;
+  height: auto;
+  border-radius: 5%;
+  margin: 0.4%;
+  filter: drop-shadow(5px 5px 10px #000);
+}
+
+.video-image {
+  width: 100%;
+  top: 0;
+  position: absolute;
+}
+
+.info {
+  position: relative;
+  margin-top: 50%;
+  margin-left: 50px;
+  max-width: 50%;
+}
+
+.video-overlay {
+  position: absolute;
+}
+
+.video-display {
+  position: relative
+}
+
+.info-footer {
+  height: 100vh;
+}
+
+.account-info {
+  display: flex;
+  height: 50%;
+  margin: 20px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.franchise {
+  width: 20%;
+  background-color: #1E2841;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.video-feed {
+  display: flex;
+}
+
+.logo-wrapper {
+  padding: 10px 30px;
 }
