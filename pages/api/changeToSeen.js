@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 
-export default async ({body}, res) => {
+const changeToSeen = async ({body}, res) => {
     const graphQLClient = new GraphQLClient(process.env.ENDPOINT, {
       headers: {
         "Authorization": process.env.GRAPH_CMS_TOKEN
@@ -32,3 +32,5 @@ export default async ({body}, res) => {
     res.status(201).json({ slug: body.slug });
     return res;
 }
+
+export default changeToSeen;
