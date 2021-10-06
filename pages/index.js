@@ -1,8 +1,8 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import NavBar from '../components/NavBar';
 import Section from '../components/Section';
-import Link from 'next/Link';
-import Image from 'next/Image';
+import Link from 'next/link';
+import Image from 'next/image';
 import disneyLogo from '../public/disney-button.png';
 import pixarLogo from '../public/pixar-button.png';
 import marvelLogo from '../public/marvel-button.png';
