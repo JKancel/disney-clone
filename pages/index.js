@@ -27,6 +27,7 @@ export const getStaticProps = async () => {
       slug
       thumbnail {
         url
+        alt
       }
       mp4 {
         url
