@@ -19,16 +19,16 @@ jobs:
       uses: bahmutov/npm-install@HEAD
 
     - name: Build app
-      run: npx nx affected -- --target=build --base=origin/main --parallel
+      run: npx nx affected --target=build --base=origin/main --parallel
     
     - name: Test app
-      run: npx nx affected -- --target=test --base=origin/main --parallel
+      run: npx nx affected --target=test --base=origin/main --parallel
     
     - name: Lint app
-      run: npx nx affected -- --target=lint --base=origin/main --parallel
+      run: npx nx affected --target=lint --base=origin/main --parallel
     
     - name: e2e Test app
-      run: npx nx affected -- --target=e2e --base=origin/main --parallel
+      run: npx nx affected --target=e2e --base=origin/main --parallel
 
     # - name: Build and publish Docker container
     #   uses: mr-smithers-excellent/docker-build-push@v5

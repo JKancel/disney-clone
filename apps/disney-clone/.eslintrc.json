@@ -3,16 +3,36 @@
     "plugin:@nrwl/nx/react-typescript",
     "../../.eslintrc.json",
     "next",
-    "next/core-web-vitals"
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parserOptions": {
+        "project": ["apps/disney-clone/tsconfig(.*)?.json"]
+      },
       "rules": {
         "@next/next/no-html-link-for-pages": [
           "error",
           "apps/disney-clone/pages"
+        ],
+        "prettier/prettier": [
+          "error",
+          {
+            "trailingComma": "none",
+            "tabWidth": 2,
+            "useTabs": false,
+            "semi": true,
+            "singleQuote": true,
+            "bracketSpacing": true,
+            "eslintIntegration": true,
+            "arrowParens": "avoid",
+            "printWidth": 130
+          }
         ]
       }
     },
