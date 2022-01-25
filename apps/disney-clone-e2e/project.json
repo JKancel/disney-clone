@@ -1,0 +1,28 @@
+{
+  "root": "apps/disney-clone-e2e",
+  "sourceRoot": "apps/disney-clone-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/disney-clone-e2e/cypress.json",
+        "devServerTarget": "disney-clone:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "disney-clone:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/disney-clone-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["disney-clone"]
+}

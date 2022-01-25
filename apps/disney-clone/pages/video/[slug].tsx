@@ -21,7 +21,6 @@ export const getServerSideProps = async (pageContext) => {
           description
           thumbnail {
             url
-            alt
           }
           mp4 {
             url

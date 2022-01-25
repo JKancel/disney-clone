@@ -1,6 +1,12 @@
+import { stringify } from 'querystring';
 import Card from './Card';
 
-const Section = ({genre, videos}) => {
+export type SectionProps = React.HTMLAttributes<any> & {
+    genre: string,
+    videos: { id: string, href: string, slug: string, thumbnail: string }[]
+};
+
+const Section = ({genre, videos}: SectionProps) => {
     console.log(videos);
     return (
         <div className={"section"}>
