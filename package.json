@@ -5,6 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "build:disney": "nx build disney-clone",
+    "build:disney:prod": "nx build disney-clone --prod",
     "test": "nx test",
     "e2e": "nx e2e",
     "lint": "nx lint"
