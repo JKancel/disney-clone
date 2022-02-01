@@ -13,58 +13,57 @@ export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
     headers: {
-      "Authorization": process.env.GRAPH_CMS_TOKEN
+      Authorization: process.env.GRAPH_CMS_TOKEN
     }
   });
   const videoQuery = gql`
-  query {
-    videos {
-      id
-      seen
-      title
-      tags
-      description
-      slug
-      thumbnail {
-        url
-        alt
-      }
-      mp4 {
-        url
+    query {
+      videos {
+        id
+        seen
+        title
+        tags
+        description
+        slug
+        thumbnail {
+          url
+        }
+        mp4 {
+          url
+        }
       }
     }
-  }
   `;
 
   const accountQuery = gql`
-  query {
-    account(where: {id: "ckucysrg8hx740e09u51ojqj2"}) {
-      username
-      avatar {
-        url
+    query {
+      account(where: { id: "ckucysrg8hx740e09u51ojqj2" }) {
+        username
+        avatar {
+          url
+        }
       }
     }
-  }
   `;
 
-  const videosData = await graphQLClient.request(videoQuery)
+  const videosData = await graphQLClient.request(videoQuery);
   const videos = videosData.videos;
-  const accountData = await graphQLClient.request(accountQuery)
+  const accountData = await graphQLClient.request(accountQuery);
   const account = accountData.account;
   return {
     props: {
       videos,
       account
     }
-  }
+  };
 };
-
 
 const Home = ({ videos, account }) => {
   console.log(videos);
-  const randomVideo = (videos) => videos[Math.floor(Math.random() * videos.length)];
-  const filterVideos = (videos, genre) => videos.filter((video) => video.tags.includes(genre));
-  const unSeenVideos = (videos) => videos.filter(video => !video.seen);
+  console.log(account);
+  const randomVideo = videos => videos[Math.floor(Math.random() * videos.length)];
+  const filterVideos = (videos, genre) => videos.filter(video => video.tags.includes(genre));
+  const unSeenVideos = videos => videos.filter(video => !video.seen);
 
   return (
     <>
@@ -75,18 +74,31 @@ const Home = ({ videos, account }) => {
         </div>
       </div>
       <div className="video-feed">
-        <Link href="#disney"><div className="franchise" id="disney">
-          <Image className="franchise-logo" src={disneyLogo} alt={"Disney Logo"}></Image>
-        </div>
+        <Link href="#disney" passHref>
+          <div className="franchise" id="disney">
+            <Image className="franchise-logo" src={disneyLogo} alt={'Disney Logo'}></Image>
+          </div>
         </Link>
-        <Link href="#pixar"><div className="franchise" id="pixar">
-          <Image className="franchise-logo" src={pixarLogo} alt={"Pixar Logo"}></Image></div></Link>
-        <Link href="#star-wars"><div className="franchise" id="star-wars">
-          <Image className="franchise-logo" src={starWarsLogo} alt={"Star Wars Logo"}></Image></div></Link>
-        <Link href="#nat-geo"><div className="franchise" id="nat-geo">
-          <Image className="franchise-logo" src={natGeoLogo} alt={"Nat Geo Logo"}></Image></div></Link>
-        <Link href="#marvel"><div className="franchise" id="marvel">
-          <Image className="franchise-logo" src={marvelLogo} alt={"Marvel Logo"}></Image></div></Link>
+        <Link href="#pixar" passHref>
+          <div className="franchise" id="pixar">
+            <Image className="franchise-logo" src={pixarLogo} alt={'Pixar Logo'}></Image>
+          </div>
+        </Link>
+        <Link href="#star-wars" passHref>
+          <div className="franchise" id="star-wars">
+            <Image className="franchise-logo" src={starWarsLogo} alt={'Star Wars Logo'}></Image>
+          </div>
+        </Link>
+        <Link href="#nat-geo" passHref>
+          <div className="franchise" id="nat-geo">
+            <Image className="franchise-logo" src={natGeoLogo} alt={'Nat Geo Logo'}></Image>
+          </div>
+        </Link>
+        <Link href="#marvel" passHref>
+          <div className="franchise" id="marvel">
+            <Image className="franchise-logo" src={marvelLogo} alt={'Marvel Logo'}></Image>
+          </div>
+        </Link>
       </div>
       <Section genre={'Recommanded for you'} videos={unSeenVideos(videos)} />
       <Section genre={'Family'} videos={filterVideos(videos, 'family')} />
@@ -96,9 +108,8 @@ const Home = ({ videos, account }) => {
       <Section id="disney" genre={'Disney'} videos={filterVideos(videos, 'disney')} />
       <Section id="nat-geo" genre={'National Geographic'} videos={filterVideos(videos, 'national-geographic')} />
       <Section id="marvel" genre={'Marvels'} videos={filterVideos(videos, 'marvels')} />
-
     </>
-  )
-}
+  );
+};
 
 export default Home;

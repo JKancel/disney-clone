@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "disney-clone": "apps/disney-clone",
+    "disney-clone-e2e": "apps/disney-clone-e2e"
+  }
+}
